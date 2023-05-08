@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.item.myitem.mapper.ScriptMapper">
+    <select id="byTypeSearch" resultType="com.item.myitem.entity.ScriptDetailEntity">
+        select *
+        from script_detail sd INNER JOIN link_scripttype ls on sd.id = ls.script_id
+        INNER JOIN script_tpye st on st.id = ls.script_typeid
+        <where>
+            <if test="type!=null and type !=''">
+                st.name= #{type}
+            </if>
+        </where>
+    </select>
+</mapper>
